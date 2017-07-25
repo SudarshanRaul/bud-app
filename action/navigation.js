@@ -1,10 +1,10 @@
 /*Navigation Action*/
 
 const init = () => {
-    (dispatch) => {
-        return {
+    return (dispatch) => {
+        dispatch ({
             type : 'NAV_LINKS',
             data : ['Home', 'Summary']    
-        }
+        })
     }
 }

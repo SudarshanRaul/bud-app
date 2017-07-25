@@ -4,9 +4,10 @@ class Navigation extends React.Component {
 		this.state = {};
 	}
     componentDidMount() {
-        this.props.dispatch(init);
+        this.props.dispatch(init());
     }
     render() {
+        console.log(this.props.navigationReducer)
         return (
             <div className="navigation-wrap">
                 <div className="navigation-header">
@@ -18,8 +19,11 @@ class Navigation extends React.Component {
 }
 
 const mapStateToProps = (state={}) => {
-    console.log(state);
-    return state
+    return {
+        navigationReducer : state.navigationReducer,
+        navigationLinks : state.navigationReducer.navigationLinks
+    }
 }
+
 
 let NavigationContainer = ReactRedux.connect(mapStateToProps)(Navigation);
