@@ -3,19 +3,22 @@ class Navigation extends React.Component {
 		super(props);
 		this.state = {};
 	}
-    componentDidMount() {
-        this.props.dispatch(init());
-    }
-    render() {
-        console.log(this.props.navigationReducer)
-        return (
-            <div className="navigation-wrap">
-                <div className="navigation-header">
-                    Navigation
-                </div>
-            </div>
-        )
-    }
+  componentWillMount() {
+    this.props.dispatch(init());   
+  }
+  componentWillReceiveProps(props){
+    console.log(props);
+  }
+  render() {
+    return (
+      <div className="navigation-wrap">
+        <div className="navigation-header">
+          Navigation
+        </div>
+        {this.props.navigationReducer.navigationLinks.map((links, index) => <div key={index}>{links}</div>)}
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state={}) => {
